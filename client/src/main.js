@@ -20,7 +20,11 @@ import axios from 'axios'
 
 
 axios.defaults.withCredentials = true
-axios.defaults.baseURL = 'http://192.168.60.100:8080'
+if (process.env.NODE_ENV === 'development') {
+    axios.defaults.baseURL = 'http://localhost:8080/'
+} else {
+    axios.defaults.baseURL = 'http://192.168.60.100:8080'
+}
 axios.defaults.withCredentials
 // axios.interceptors.response.use(undefined, function (error) {
 //     if (error) {
