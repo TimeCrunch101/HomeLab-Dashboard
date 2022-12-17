@@ -38,3 +38,18 @@
     margin: 0 auto;
 }
 
+#related_service_div {
+    margin-left: auto;
+}
+
+#related_service {
+    background-color: c.$primary-2;
+    color: c.$primary-3;
+    border: 0;
+    font-size: 1.5rem;
+    padding: 10px;
+    margin-bottom: .5em;
+    border-radius: .5em;
+    box-shadow: 0 0 4px c.$primary-2;
+}
+

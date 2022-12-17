@@ -8,7 +8,9 @@ const router = useRouter()
 const form = ref({
     title: null,
     body: null,
+    related_service: null
 })
+const relatedServices = ref([])
 
 const toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -38,15 +40,20 @@ const publishDocument = () => {
 
 }
 const saveDraft = async () => {
+    const timestamp = new Date().toISOString()
     form.value.body = document.getElementsByClassName('ql-editor')[0].innerHTML
     await axios.post('/create/document/draft', {
+        title: form.value.title,
         text: form.value.body,
-        title: form.value.title
+        timestamp: timestamp,
+        related_service: form.value.related_service
+    }).then((res) => {
+        if (res.data.status === 'success') {
+            router.push('/documentation')
+        }
     }).catch((err) => {
         console.error(err)
     })
-    router.push('/documentation')
-    
 }
 
 onMounted(() => {
@@ -57,11 +64,15 @@ onMounted(() => {
         placeholder: 'Document Body...',
         theme: 'snow'
     })
+    axios.get('/api/services').then((res) => {
+        relatedServices.value = res.data.services
+    }).catch((err) => {
+
+    })
 })
 </script>
 
 <template>
-   
         <div class="document-form-wrapper">
             <form @submit.prevent="publishDocument()">
                 <div class="flex f-gap-1 mb-2">
@@ -69,13 +80,20 @@ onMounted(() => {
                     <button type="button" @click="saveDraft()" class="btn btn-secondary">Save Draft</button>
                     <button type="button" @click="discard()" class="btn btn-danger">Discard</button>
                 </div>
-                <!-- <h1 class="mb-1">New Document</h1> -->
-                <input type="text" name="title" id="title" class="new-document-title" placeholder="Document Title..." v-model="form.title">
+                <div class=" flex f-align-center">
+                    <div>
+                        <input type="text" name="title" id="title" class="new-document-title" placeholder="Document Title..." v-model="form.title">
+                    </div>
+                    <div id="related_service_div">
+                        <select name="related_service" id="related_service" v-model="form.related_service">
+                            <option v-for="service in relatedServices" :value="service.service_id">{{service.title}}</option>
+                        </select>
+                    </div>
+                </div>
                 <div id="editor"></div>
                 <input style="display:none;" type="text" name="comment_post_value" id="comment_post_value" v-model="form.body">
             </form>
         </div>
-        
 </template>
 
 <style scoped>

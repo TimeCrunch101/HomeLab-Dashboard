@@ -72,10 +72,12 @@ exports.createCredential = (req, res) => {
 }
 
 exports.createDocumentDraft = (req, res) => {
-    console.log(req.body)
+    const parsedID = parseInt(req.body.related_service)
     pool.query("INSERT INTO dbo_document_drafts SET ?", {
         draft_title: req.body.title,
-        draft_html: req.body.text
+        draft_html: req.body.text,
+        timestamp: req.body.timestamp,
+        related_service: parsedID
     }, (err) => {
         if (err) throw err;
         res.json({
