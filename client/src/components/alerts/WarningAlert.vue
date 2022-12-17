@@ -1,12 +1,11 @@
 <script setup>
 const props = defineProps({
-    successMessage: String
+    alertMessage: String
 })
 
 const dismissAlert = () => {
-    const alertDiv = document.getElementById("success1")
+    const alertDiv = document.getElementById("alert1")
     alertDiv.classList.add('hidden')
-    location.reload();
 }
 
 
@@ -14,9 +13,9 @@ const dismissAlert = () => {
 </script>
 
 <template>
-    <div id="success1" class="alert alert-success">
+    <div id="alert1" class="alert alert-warning">
         <!-- <p>This is a <span class="warning">warning</span> alert</p> -->
-        <p>{{successMessage}}</p>
+        <p>{{alertMessage}}</p>
         <div @click="dismissAlert" class="alert-action">
             <i class="fa-solid fa-xmark fa-lg"></i>
         </div>

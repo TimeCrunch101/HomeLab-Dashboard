@@ -2,7 +2,7 @@
 
 .table {
     border-collapse: collapse;
-    width: 90%;
+    width: 70%;
     min-width: max-content;
     margin: 0 auto;
     &-head {
@@ -43,4 +43,9 @@
             border: 1px solid c.$primary-1;
         }
     }
+}
+
+.actions,
+.buttons-cell {
+    width: 150px;
 }

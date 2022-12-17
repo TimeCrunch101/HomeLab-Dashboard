@@ -6,22 +6,23 @@ const route = useRoute()
 
 const documentDraft = ref({})
 
-axios.get(`/api/get/draft/${route.params.draft_id}`).then((res) => {
-    documentDraft.value = res.data.draft
-    document.getElementById('doc-body').innerHTML = documentDraft.value.draft_html
-}).catch((err) => {
-    console.error(err)
-})
 onMounted(() => {
+    axios.get(`/api/get/published/doc/${route.params.doc_id}`).then((res) => {
+        documentDraft.value = res.data.docs
+        document.getElementById('doc-body').innerHTML = documentDraft.value.doc_html
+    }).catch((err) => {
+        console.error(err)
+    })
 })
 
 </script>
 
 <template>
 
-<h1>{{documentDraft.draft_title}}</h1>
+<h1>{{documentDraft.doc_title}}</h1>
 <p>Related Service: {{documentDraft.related_service}}</p>
 <p>Created: {{documentDraft.timestamp}}</p>
+
 
 
 <div class="contain">

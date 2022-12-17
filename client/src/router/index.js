@@ -11,7 +11,7 @@ const router = createRouter({
     {
       path: '/documentation',
       name: 'documentation',
-      component: () => import('../views/DocumentationView.vue')
+      component: () => import('../views/DocumentationPublishView.vue')
     },
     {
       path: '/asset_man',
@@ -47,6 +47,21 @@ const router = createRouter({
       path: '/create/document',
       name: 'New Document',
       component: () => import('../views/NewDocument.vue')
+    },
+    {
+      path: '/documents/drafts',
+      name: 'View Drafts',
+      component: () => import('../views/DocumentDraftsView.vue')
+    },
+    {
+      path: '/document/:draft_id',
+      name: 'View Draft',
+      component: () => import('../views/DocumentView.vue')
+    },
+    {
+      path: '/published/document/:doc_id',
+      name: 'View Published Document',
+      component: () => import('../views/PubDocView.vue')
     },
   ]
 })

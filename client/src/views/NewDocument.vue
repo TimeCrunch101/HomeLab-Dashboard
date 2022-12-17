@@ -3,32 +3,33 @@ import Quill from "quill/dist/quill.js"
 import { onMounted, ref } from "vue";
 import {useRouter} from "vue-router"
 import axios from "axios";
+import WarningAlert from "../components/alerts/WarningAlert.vue"
+
 const router = useRouter()
+
+const displayAlert = ref({
+    display: false,
+    message: null
+})
 
 const form = ref({
     title: null,
     body: null,
     related_service: null
 })
+
 const relatedServices = ref([])
 
 const toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-  ['blockquote', 'code-block'],
-
-  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+ // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
   [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-  [{ 'direction': 'rtl' }],                         // text direction
-
+  //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
   [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
   [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-  [{ 'font': [] }],
+  //[{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  //[{ 'font': [] }],
   [{ 'align': [] }],
-
   ['clean']                                         // remove formatting button
 ];
 
@@ -39,6 +40,7 @@ const discard = () => {
 const publishDocument = () => {
 
 }
+
 const saveDraft = async () => {
     const timestamp = new Date().toISOString()
     form.value.body = document.getElementsByClassName('ql-editor')[0].innerHTML
@@ -50,6 +52,11 @@ const saveDraft = async () => {
     }).then((res) => {
         if (res.data.status === 'success') {
             router.push('/documentation')
+        } else {
+            if (res.data.status === 'failed') {
+                displayAlert.value.display = true
+                displayAlert.value.message = res.data.message
+            }
         }
     }).catch((err) => {
         console.error(err)
@@ -73,6 +80,7 @@ onMounted(() => {
 </script>
 
 <template>
+    <WarningAlert v-if="displayAlert.display" :alertMessage="displayAlert.message"/>
         <div class="document-form-wrapper">
             <form @submit.prevent="publishDocument()">
                 <div class="flex f-gap-1 mb-2">
@@ -97,10 +105,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
 #editor{
     height: calc(100vh - 16em);
 }
-
-
 </style>

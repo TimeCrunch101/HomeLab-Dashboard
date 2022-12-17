@@ -8,12 +8,17 @@ app.use(cors({
     origin: true,
     credentials: true
 }))
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({
+    extended:false,
+    limit: '500mb'
+}))
 app.use(express.json())
 const initGetRouter = require("./routers/getRouter")
 const initPostRouter = require("./routers/postRouter")
+const initDeleteRouter = require("./routers/deleteRouter")
 initGetRouter(app)
 initPostRouter(app)
+initDeleteRouter(app)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(__dirname + '/public'))

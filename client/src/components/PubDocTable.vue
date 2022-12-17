@@ -9,33 +9,21 @@ const props = defineProps({
 })
 
 const displaySuccessAlert = ref(false)
-const publishedAlert = ref(false)
 
-const deleteDraft = (draft_id) => {
-    console.log(draft_id)
-    axios.delete(`/api/delete/draft/${draft_id}`).then((res) => {
+const deletePublishedDocument = (draft_id) => {
+    axios.delete(`/api/delete/published/document/${draft_id}`).then((res) => {
         displaySuccessAlert.value = true
     }).catch((err) => {
         console.error(err)
     })
 }
 
-const publishDraft = (draft_id) => {
-    axios.post(`/api/publish/draft/${draft_id}`).then((res) => {
-        publishedAlert.value = true
-    }).catch((err) => {
-        console.error(err)
-    })
-    console.log(draft_id)
-}
-
-const link = `/document/`
+const link = `/published/document/`
 
 </script>
 
 <template>
-    <SuccessAlert v-if="displaySuccessAlert" successMessage="Draft Deleted Successfully"/>
-    <SuccessAlert v-if="publishedAlert" successMessage="Draft Published Successfully"/>
+    <SuccessAlert v-if="displaySuccessAlert" successMessage="Document Deleted Successfully"/>
     <table class="table">
         <thead class="table-head">
             <tr class="table-head-row">
@@ -47,7 +35,7 @@ const link = `/document/`
         </thead>
         <tbody class="table-body">
             <tr v-for="document in props.documentArray" class="table-body-row">
-                <td class="table-body-cell action"> <router-link :to='link+document.draft_id'>{{document.draft_title}}</router-link></td>
+                <td class="table-body-cell action"> <router-link :to='link+document.doc_id'>{{document.doc_title}}</router-link></td>
                 <td class="table-body-cell">{{document.related_service}}</td>
                 <td class="table-body-cell">{{document.timestamp}}</td>
                 <td class="table-body-cell buttons-cell pl-1">
@@ -55,11 +43,8 @@ const link = `/document/`
                         <button class="btn btn-success">
                             <i class="fa-regular fa-pen-to-square action"></i>
                         </button>
-                        <button @click="deleteDraft(document.draft_id)" class="btn btn-danger">
+                        <button @click="deletePublishedDocument(document.doc_id)" class="btn btn-danger">
                             <i class="fa-solid fa-trash action"></i>
-                        </button>
-                        <button @click="publishDraft(document.draft_id)" class="btn btn-secondary">
-                            <p>Publish</p>
                         </button>
                     </div>                    
                 </td>
