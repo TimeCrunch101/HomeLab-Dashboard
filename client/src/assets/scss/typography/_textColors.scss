@@ -1,0 +1,26 @@
+@use "./colors" as c;
+
+.primary {
+    font-weight: 600;
+    color: c.$primary-4;
+}
+
+.danger {
+    font-weight: 900;
+    color: c.$danger-1;
+}
+
+.warning {
+    font-weight: 600;
+    color: c.$warning-1;
+}
+
+.success {
+    font-weight: 600;
+    color: c.$success-1;
+}
+
+// .secondary {
+//     font-weight: 900;
+//     color: c.$primary-4;
+// }

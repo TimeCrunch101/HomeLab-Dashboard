@@ -1,0 +1,46 @@
+@use "../typography/colors" as c;
+
+.table {
+    border-collapse: collapse;
+    width: 90%;
+    min-width: max-content;
+    margin: 0 auto;
+    &-head {
+        
+        
+        &-row {
+            // text-align: center;
+            color: c.$primary-4;
+            text-transform: uppercase;
+            font-weight: 900;
+            background-color: c.$primary-1;
+            
+            td {
+                
+                border-bottom: 2px solid black;
+                padding-top: .5em;
+                padding-bottom: .5em;
+                padding-left: 1em;
+            }
+            
+        }
+    }
+    &-body {
+        
+        &-row {
+            border-bottom: 1px solid c.$primary-4;
+            background-color: c.$primary-2;   
+            &:hover {
+                background-color: c.$primary-1;
+            }
+        }
+        &-cell {
+            color: c.$primary-4;
+            padding-top: .25em;
+            padding-bottom: .25em;
+            padding-left: .2em;
+            padding-right: .2em;
+            border: 1px solid c.$primary-1;
+        }
+    }
+}

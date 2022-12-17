@@ -1,0 +1,40 @@
+@use "../typography/colors" as c;
+
+.button-div {
+    background-color: c.$primary-2;
+    border-radius: 1em;
+    // border: 1px solid c.$primary-0;
+    max-width: 100%;
+    padding: 1em;
+    display: flex;
+    gap: 1.5em;
+
+    box-shadow: 0 0 6px 2px c.$primary-1;
+}
+
+.new-document-title {
+    background-color: c.$primary-2;
+    // border: 1px solid c.$primary-3;
+    border: 0px;
+    border-radius: .5em;
+    font-size: 1.5rem;
+    color: c.$primary-4;
+    padding: 10px;
+    margin-bottom: .5em;
+
+    box-shadow: 0 0 4px c.$primary-1;
+}
+
+.new-document-title::placeholder {
+    opacity: 1;
+    color: c.$primary-3;
+    font-style: italic;
+}
+
+.document-form-wrapper {
+    
+    min-width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+

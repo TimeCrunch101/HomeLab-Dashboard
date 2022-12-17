@@ -1,0 +1,91 @@
+@use "../typography/_colors.scss" as *;
+@use "../utils/_vars.scss" as v;
+
+.sidenav {
+    height: 100%;
+    width: v.$nav-width; 
+    position: fixed; 
+    z-index: 1;
+    top: 0; 
+    left: 0;
+    background-color: $primary-2; 
+    overflow-x: hidden; 
+    padding-top: 20px;
+    box-shadow:  0px 0 20px 5px $primary-2;
+    a {
+        padding: 6px 8px 6px 16px;
+        font-size: 1.5em;
+        color: $primary-3;
+        display: block;
+    }
+    a:hover {
+        color: $primary-1;
+    }
+    a::before {
+        content: '|';
+        color: green;
+        margin-right: 10px;
+    }
+    a:hover::before {
+        content: "|";
+        color: $primary-4;
+        margin-right: 10px;
+    }
+}
+  
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
+
+.sidenav-header {
+    position: absolute;
+    width: 100%;
+    background-color: $primary-1;
+    color: $primary-3;
+    height: 90px;
+    top: 0px;
+    border-radius: 0 0 40% 40%;
+    border-bottom: 5px solid $primary-3;
+    box-shadow: 0px 1px 5px $primary-3;
+}
+
+.sidenav-header p {
+    width: 100%;
+    margin-top: 1.4em;
+    margin-left: 3.3em;
+    font-size: 1.4em;
+}
+
+.sidenav-body {
+    margin-top: 7em;
+}
+
+.sidenav-body ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.sidenav-foot {
+    position: absolute;
+    width: 100%;
+    background-color: $primary-1;
+    color: $primary-3;
+    height: 90px;
+    bottom: 20px;
+    border-radius: 40% 40% 0 0;
+    border-top: 5px solid $primary-3;
+    box-shadow: 0px -1px 5px $primary-3;
+}
+
+.sidenav-foot p {
+    width: 100%;
+    margin-top: 1.4em;
+    margin-left: 3.3em;
+    font-size: 1.4em;
+}
+
+.sidenav-foot p:hover {
+    cursor: pointer;
+}

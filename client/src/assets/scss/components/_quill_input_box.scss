@@ -1,0 +1,42 @@
+@use "../typography/colors" as c;
+
+.ql-toolbar {
+    background-color: black;
+    color: white;
+
+}
+
+.ql-snow {
+    background-color: black;
+    color: white;
+
+}
+.ql-toolbar {
+    background-color: c.$primary-2;
+    span {
+        color: c.$primary-4;
+    }
+    svg {
+        filter: invert(73%) sepia(5%) saturate(5270%) hue-rotate(177deg) brightness(87%) contrast(85%);
+    }
+}
+#editor {
+    // border: 1px solid c.$primary-3;
+    border: 0px;
+    box-shadow: 0 0 8px c.$primary-1;
+    background-color: c.$primary-2;
+    color: c.$primary-4;
+   
+}
+
+
+.ql-toolbar.ql-snow {
+    // border: 1px solid c.$primary-3;
+    border: 0px;
+    box-shadow: 0 0 8px c.$primary-1;
+}
+
+.ql-editor.ql-blank::before {
+    color: c.$primary-3;
+    font-size: 1rem;
+}

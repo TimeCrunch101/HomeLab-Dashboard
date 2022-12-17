@@ -1,0 +1,101 @@
+@use "../typography/colors" as c;
+
+$modalBackgroud: rgba(14, 26, 35, 0.897);
+
+.modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30em;
+    height: calc(100vh - .01em);
+    background-color: $modalBackgroud;
+    border-left: 2px solid c.$primary-4;
+    box-shadow: 0 0 10px c.$primary-4;
+    color: c.$primary-4;
+    &-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 4em;
+        h2 {
+            color: c.$primary-4;
+            font-size: 2rem;
+        }        
+    }
+    &-body {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        form * {
+            display: block;
+        }
+        .input-group {
+            display: flex;
+            gap: .5em;
+            align-items: center;
+        }
+    }
+}
+
+.modal-close-icon {
+    position: absolute;
+    top: 1.0em;
+    left: 1em;
+}
+
+.modal-form {
+    input {
+        width: 55%;
+        font-size: 1.3rem;
+        background-color: c.$primary-2;
+        color: c.$primary-4;
+        border: 2px solid c.$primary-3;
+        border-radius: .5em;
+        padding: 3px;
+    }
+    label {
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 1em;
+        margin-bottom: .3em;
+        margin-left: .2em;
+    }
+}
+
+// ADD HARDWARE MODAL
+
+#storage_amount {
+    width: 2em;
+    text-align: center;
+}
+
+#storage {
+    width: 2.5em;
+}
+
+#RAM {
+    width: 2.5em;
+}
+
+.hover:hover {
+    cursor: pointer;
+}
+
+.select_input {
+    color: c.$primary-4;
+    font-size: 1.3rem;
+    height: 1.6em;
+    outline: none;
+    border-radius: .5em;
+    background-color: c.$primary-2;
+    border: 2px solid c.$primary-3;
+}
+
+#NICS {
+    width: 2em;
+    text-align: center;
+}
+
+#NIC_amount {
+    width: 2.5em;
+}
+

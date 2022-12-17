@@ -1,0 +1,49 @@
+@use "../typography/colors" as c;
+
+.service-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+    margin-top: 5em;
+    padding-left: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.service-card {
+    min-width: 278px;
+    min-height: 58px;
+    display: flex;
+    background-color: c.$primary-1;
+    border-radius: .5em;
+    box-shadow: 0 0 5px 2px c.$primary-1;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 5px 2px c.$primary-4;
+    }    
+}
+
+.service-img {
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        border-radius: .5em;
+        margin-left: .2em;
+        width: 50px;
+        height: 50px;
+    }
+}
+.service-name {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        text-transform: uppercase;
+        font-size: x-large;
+        color: c.$primary-4;
+        letter-spacing: 3px;
+    }
+}

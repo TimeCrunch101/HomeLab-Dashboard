@@ -70,3 +70,17 @@ exports.createCredential = (req, res) => {
         })
     })
 }
+
+exports.createDocumentDraft = (req, res) => {
+    console.log(req.body)
+    pool.query("INSERT INTO dbo_document_drafts SET ?", {
+        draft_title: req.body.title,
+        draft_html: req.body.text
+    }, (err) => {
+        if (err) throw err;
+        res.json({
+            status: 'success',
+            message: 'Draft saved successfully'
+        })
+    })
+}

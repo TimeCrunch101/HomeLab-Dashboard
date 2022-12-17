@@ -1,0 +1,154 @@
+@use "../typography/colors" as c;
+
+.page-title {
+    display: flex;
+    align-items: center;
+    h1 {
+        color: c.$primary-1;
+        font-size: 4rem;
+    }
+    p {
+        color: c.$primary-1;
+        margin-left: auto;
+        margin-right: 3em;
+        font-weight: 900;
+        strong {
+            color: rgb(138, 204, 201);
+        }
+    }
+}
+
+
+.section-container {
+    background-color: c.$primary-2;
+    padding-bottom: 2em;
+    margin-bottom: 1em;
+    border-radius: 3em 1em .5em .5em;
+    box-shadow: 0 0 9px black;
+}
+
+.section-title h2 {
+    height: 2em;
+    background-color: c.$primary-1;
+    border-radius: 3em 1em 2em .5em;
+    
+    display: flex;
+    align-items: center;
+    color: c.$primary-4;
+    padding-left: 1em;
+}
+
+$size: 190px;
+.section {
+    padding-left: 2em;
+    .img-wrapper {
+        display: flex;
+        gap: 1.5em;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    &-image {
+        width: $size;
+        height: $size;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 1.7rem;
+        background-color: c.$primary-3;
+        border-radius: 1em;
+        border: 1px solid c.$primary-1;
+        box-shadow: 0 0 15px c.$primary-1;
+        &:hover {
+            cursor: pointer;
+            background-color: c.$primary-0;
+        }
+    }
+}
+
+.card-list-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.card {
+    width: fit-content;
+    height: fit-content;
+    box-shadow: 0 0 12px black;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    
+    &-title {
+        height: 3em;
+        border-radius: 1em 1em 0 0;
+        background-color: c.$primary-1;
+        color: c.$primary-4;
+        font-weight: 800;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &-body {
+        background-color: c.$primary-2;
+        color: c.$primary-4;
+        padding: 1em;
+        p {
+            margin-bottom: .3em;
+        }
+    }
+    &-footer {
+        height: 3em;
+        border-radius: 0 0 1em 1em;
+        background-color: c.$primary-1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        a {
+            color: c.$primary-4;
+        }
+    }
+}
+
+.add-item {
+    height: 200px;
+    width: 200px;
+    background-color: c.$primary-2;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 12px black;
+    p {
+        color: c.$primary-4;
+        font-size: 5rem;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+.add-cred {
+    height: 100px;
+    width: 100px;
+    background-color: c.$primary-2;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 12px black;
+    p {
+        color: c.$primary-4;
+        font-size: 3rem;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+

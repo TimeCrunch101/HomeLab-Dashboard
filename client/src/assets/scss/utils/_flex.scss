@@ -1,0 +1,45 @@
+.flex {
+    display: flex;
+}
+
+.f-wrap {
+    flex-wrap: wrap;
+}
+.f-nowrap {
+    flex-wrap: nowrap;
+}
+
+.f-around {
+    justify-content: space-around;
+}
+.f-between {
+    justify-content: space-between;
+}
+.f-align-center {
+    align-items: center;    
+}
+.f-just-center {
+    justify-content: center;
+}
+.f-gap {
+    gap: .5em;
+}
+.f-gap-1 {
+    gap: 1em;
+}
+
+.f-gap-2 {
+    gap: 2em;
+}
+
+.f-gap-3 {
+    gap: 3em;
+}
+
+.f-gap-4 {
+    gap: 4em;
+}
+
+.f-gap-5 {
+    gap: 5em;
+}

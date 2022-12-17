@@ -1,0 +1,42 @@
+@use "./base/_reset.scss";
+@use "./components/_navbar.scss";
+@use "./typography/_colors.scss" as c;
+@use "./utils/_vars.scss" as v;
+@use "./components/serviceCard";
+@use "./components/tables";
+@use "./utils/margins";
+@use "./utils/padding";
+@use "./utils/flex";
+@use "./utils/borderRadius";
+@use "./views/ServiceView.scss";
+@use "./components/buttons";
+@use "./components/alerts";
+@use "./typography/textColors";
+@use "./utils/tags";
+@use "./utils/basic";
+@use "./components/modal";
+@use "./components/quill_input_box";
+@use "./views/documentationView.scss";
+
+
+* {
+    font-family: 'fira sans';
+}
+
+body {
+    background-color: c.$primary-0;
+}
+
+.view {
+    margin-left: calc(v.$nav-width + 1em);
+    margin-top: 1em;
+    margin-right: 1em;
+    padding: 0px 10px;
+}
+
+h2 {
+  color: c.$primary-1;
+}
+
+
+

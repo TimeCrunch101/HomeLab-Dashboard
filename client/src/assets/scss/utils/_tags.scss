@@ -1,0 +1,40 @@
+@use "../typography/colors" as c;
+
+.tags {
+    height: 2.5em;
+    background-color: c.$primary-1;
+    border-radius: .8em;
+    width: auto;
+    &-title {
+        border-left: 3px solid c.$primary-4;
+        background-color: c.$primary-3;   
+        width: 70px;
+        border-radius: 0 1em 1em 0;
+        color: c.$primary-1;
+    }
+    &-list {        
+        margin-left: 1em;
+    }
+    &-item {
+        width: max-content;
+        height: max-content;
+        outline: 1px solid c.$primary-4;
+        padding: .1em .5em .1em .5em;
+        font-size: .9em;
+        border-radius: 1em;
+        box-shadow: 0 0 4px 0px c.$primary-4;
+        color: c.$primary-4;
+        background-color: c.$primary-2;
+        &-add {
+            background-color: c.$success-4;
+            font-size: 1.1em;
+            font-weight: 600;
+            outline: 1px solid c.$success-0;
+            color: c.$success-0;
+            box-shadow: 0 0 0 0;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

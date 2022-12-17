@@ -1,0 +1,31 @@
+@use "../typography/colors" as c;
+
+.alert {
+    width: max-content;
+    text-align: start;
+    padding: .5em .8em .5em .8em;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.alert-primary {
+    border-radius: .4em;
+    outline: 2px solid c.$primary-4;
+    background-color: c.$primary-0;
+}
+.alert-danger {
+    border-radius: .4em;
+    outline: 2px solid c.$danger-4;
+    background-color: c.$danger-2;
+}
+.alert-warning {
+    border-radius: .4em;
+    outline: 2px solid c.$warning-4;
+    background-color: c.$warning-0;
+}
+.alert-success {
+    border-radius: .4em;
+    outline: 2px solid c.$success-4;
+    background-color: c.$success-0;
+}

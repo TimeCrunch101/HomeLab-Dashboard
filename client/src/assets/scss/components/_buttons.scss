@@ -1,0 +1,78 @@
+@use "../typography/colors" as c;
+
+.btn {
+    width: max-content;
+    display: block;
+    padding: .2em;
+    border-radius: .3em;
+    border: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.btn-primary {
+    background-color: c.$primary-4;
+    color: c.$primary-1;
+    outline: 2px solid c.$primary-1;
+    font-weight: 900;
+    font-size: 1em;
+    &:hover {
+        box-shadow: 0 0 3px 3px c.$primary-4;
+    }
+}
+.btn-danger {
+    background-color: c.$danger-0;
+    color: c.$danger-4;
+    outline: 2px solid c.$danger-4;
+    font-weight: 900;
+    font-size: 1em;
+    &:hover {
+        box-shadow: 0 0 3px 3px c.$danger-0;
+    }
+}
+.btn-warning {
+    background-color: c.$warning-1;
+    color: c.$warning-4;
+    outline: 2px solid c.$warning-4;
+    font-weight: 900;
+    font-size: 1em;
+    &:hover {
+        box-shadow: 0 0 3px 3px c.$warning-1;
+    }
+}
+.btn-success {
+    background-color: c.$success-0;
+    color: c.$success-4;
+    outline: 2px solid c.$success-4;
+    font-weight: 900;
+    font-size: 1em;
+    &:hover {
+        box-shadow: 0 0 3px 3px c.$success-0;
+    }
+}
+.btn-secondary {
+    background-color: inherit;
+    color: c.$secondary-4;
+    outline: 2px solid c.$secondary-4;
+    font-weight: 900;
+    font-size: 1em;
+    &:hover {
+        box-shadow: 0 0 3px 3px c.$secondary-4;
+    }
+}
+
+// Muted Button Trial
+$color:rgb(94, 94, 94);
+$color-darker:rgb(58, 58, 58);
+.btn-muted {
+    background-color: $color;
+    color: rgb(197, 197, 197);
+    outline: 2px solid $color-darker;
+    font-weight: 700;
+    font-size: .9em;
+    &:hover {
+        box-shadow: 0 0 3px 3px $color;
+    }
+}
+
