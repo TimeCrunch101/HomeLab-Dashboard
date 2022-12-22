@@ -16,5 +16,9 @@
 
     background-color: c.$primary-1;
     color: c.$primary-4;
+    ul {
+        padding-left: 4.5em;
+        list-style: circle;
+    }
 
 }

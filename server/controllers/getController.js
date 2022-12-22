@@ -22,11 +22,15 @@ exports.getService = (req, res) => {
             if (err) throw err;
             pool.query("SELECT * FROM dbo_creds WHERE related_service = ?", [serviceID], (err, creds) => {
                 if (err) throw err;
-                res.json({
-                    status: 'success',
-                    service_data: data[0],
-                    hardwareData: hardware,
-                    creds: creds
+                pool.query("SELECT * FROM dbo_documents WHERE related_service = ?", [serviceID], (err, documents) => {
+                    if (err) throw err;
+                    res.json({
+                        status: 'success',
+                        service_data: data[0],
+                        hardwareData: hardware,
+                        creds: creds,
+                        documents: documents
+                    })
                 })
             })
         })

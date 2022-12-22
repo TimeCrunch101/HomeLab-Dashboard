@@ -16,6 +16,9 @@ const serviceData = ref({
 const hardwareData = ref([])
 const serviceTotalCost = ref()
 const creds = ref([])
+const documents = ref([])
+
+const url = '/published/document/'
 
 const formatter = new Intl.NumberFormat('en-US', {
     style: "currency",
@@ -43,7 +46,7 @@ onMounted(() => {
         serviceTotalCost.value = sumArray(res.data.hardwareData)
         serviceData.value.title = res.data.service_data.title
         hardwareData.value = res.data.hardwareData
-        
+        documents.value = res.data.documents
         creds.value = res.data.creds
         hardwareData.value.forEach(e => {
             e.cost = formatter.format(e.cost)
@@ -106,7 +109,6 @@ onMounted(() => {
     </div>
     <div class="section">
         <div class="mt-1 flex f-gap-2 f-align-center">
-
             <div v-for="cred in creds">
                 <CredentialCard
                 :cred_id="cred.cred_id"
@@ -115,12 +117,24 @@ onMounted(() => {
                 password="Copy Password"
                 :link="cred.link"/>
             </div>
-
-
             <div @click="showAddCredModal()" class="add-cred">
                 <p>+</p>
             </div>
+        </div>
+    </div>
+</div>
 
+
+<div class="section-container">
+    <div class="section-title">
+        <h2>Documentation</h2>
+    </div>
+    <div class="section">
+        <div class="mt-1 flex f-gap-2 f-align-center">
+            <div id="document-link" >
+                <router-link v-for="document in documents" :to="url + document.doc_id">{{ document.doc_title }}</router-link>
+            </div>
+            <p class="testing" v-for="document in documents">{{ document.doc_timestamp }}</p>
         </div>
     </div>
 </div>
@@ -128,6 +142,12 @@ onMounted(() => {
 </template>
 
 <style scoped>
+
+.testing {
+    margin-left: auto;
+    margin-right: 1em;
+    color: lightblue;
+}
 
 </style>
 
