@@ -131,10 +131,12 @@ onMounted(() => {
     </div>
     <div class="section">
         <div class="mt-1 flex f-gap-2 f-align-center">
-            <div id="document-link" >
+            <div class="document-link" >
                 <router-link v-for="document in documents" :to="url + document.doc_id">{{ document.doc_title }}</router-link>
             </div>
-            <p class="testing" v-for="document in documents">{{ document.doc_timestamp }}</p>
+            <div class="document-link">
+                <p class="testing" v-for="document in documents">{{ document.doc_timestamp }}</p>
+            </div>
         </div>
     </div>
 </div>

@@ -152,8 +152,17 @@ $size: 190px;
     }
 }
 
-#document-link a {
-    color: lightblue;
-    font-style: italic;
-    text-decoration: underline;
+.document-link {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    a {
+        color: lightblue;
+        font-style: italic;
+        text-decoration: underline;
+    }
+    p {
+        color: lightblue;
+        font-style: italic;
+    }
 }
