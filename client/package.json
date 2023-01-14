@@ -1,5 +1,5 @@
 {
-  "name": "dashboard-fe",
+  "name": "homelab-dashboard-client",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
