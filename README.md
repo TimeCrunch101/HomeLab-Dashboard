@@ -1,2 +1,2 @@
-# lab-dashboard
- Dashboard for your homelab
+# Homelab-Dashboard
+ Dashboard for your Homelab
