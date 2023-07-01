@@ -108,7 +108,7 @@ exports.viewDraft = (req, res) => {
     dbo_document_drafts draft
     LEFT JOIN
     dbo_services service ON draft.related_service = service.service_id
-    WHERE draft.draft_id = ${req.params.draft_id}`, (err, draft) => {
+    WHERE draft.draft_id = ?`, [req.params.draft_id], (err, draft) => {
         if (err) throw "Internal Server Error"
         res.json({
             status: 'success',
@@ -144,7 +144,7 @@ exports.viewPublishedDoc = (req, res) => {
     dbo_documents published
     LEFT JOIN
     dbo_services service ON published.related_service = service.service_id
-    WHERE published.doc_id = ${req.params.doc_id}`, (err, doc) => {
+    WHERE published.doc_id = ?`, [req.params.doc_id],(err, doc) => {
         if (err) throw "Internal Server Error"
         res.json({
             status: 'success',
