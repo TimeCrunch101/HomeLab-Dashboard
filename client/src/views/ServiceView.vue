@@ -56,11 +56,21 @@ onMounted(() => {
     })
 })
 
-
+const deleteService = (service_id) => {
+    console.log(service_id)
+    axios.delete(`/api/delete/service/${route.params.service_id}`).then((res) => {
+        console.log(res.data)
+    }).catch((err) => {
+        console.error(err.response.data)
+    })
+}
 
 </script>
 
 <template>
+
+<button @click="deleteService(route.params.service_id)" class="btn btn-danger">DELETE</button>
+
 <div class="page-title mb-1">
     <h1>{{serviceData.title}}</h1>
     <p v-if="serviceTotalCost !== undefined" >Total Cost for Service: <strong>{{serviceTotalCost}}</strong></p>

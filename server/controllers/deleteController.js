@@ -32,3 +32,18 @@ exports.deleteDocument = (req, res) => {
         })        
     }
 }
+exports.deleteService = (req,res) => {
+    pool.query("DELETE FROM dbo_services WHERE service_id = ?",[req.params.service_id], (err) => {
+        try {
+            if (err) throw new Error('Could not delete service', {cause: err.message})
+            res.status(201).json({
+                message: "Service Deleted"
+            })
+        } catch (error) {
+            res.status(500).json({
+                error: error.message,
+                cause: error.cause
+            })
+        }
+    })
+}
