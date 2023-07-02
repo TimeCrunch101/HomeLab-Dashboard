@@ -29,7 +29,7 @@ const copyPassword = (cred_id) => {
         setClipboard(pass)
         // navigator.clipboard.writeText(pass)
     }).catch((err) => {
-        console.error(err)
+        console.error(err.response.data)
     })
 }
 

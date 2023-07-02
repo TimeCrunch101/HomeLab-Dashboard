@@ -16,7 +16,7 @@ const deleteDraft = (draft_id) => {
     axios.delete(`/api/delete/draft/${draft_id}`).then((res) => {
         displaySuccessAlert.value = true
     }).catch((err) => {
-        console.error(err)
+        console.error(err.response.data)
     })
 }
 
@@ -24,7 +24,7 @@ const publishDraft = (draft_id) => {
     axios.post(`/api/publish/draft/${draft_id}`).then((res) => {
         publishedAlert.value = true
     }).catch((err) => {
-        console.error(err)
+        console.error(err.response.data)
     })
     console.log(draft_id)
 }

@@ -11,7 +11,7 @@ onMounted(() => {
         documentDraft.value = res.data.docs
         document.getElementById('doc-body').innerHTML = documentDraft.value.doc_html
     }).catch((err) => {
-        console.error(err)
+        console.error(err.response.data)
     })
 })
 

@@ -27,7 +27,7 @@ axios.get('/api/asset/list').then((res) => {
         e.cost = formatter.format(e.cost)
     });
 }).catch((err) => {
-    console.error(err)
+    console.error(err.response.data)
 })
 
 

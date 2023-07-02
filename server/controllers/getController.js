@@ -1,19 +1,25 @@
 const {pool} = require('../configs/DB')
+const DB = require('./dbController')
 
 exports.main = (req, res) => {
     res.send('hello world')
 }
 
-exports.getServices = (req, res) => {
-    pool.query('SELECT service_id, title, service_icon FROM dbo_services', (err, data) => {
-        if (err) throw err;
-        res.json({
-            status: "success",
-            services: data
+exports.getServices = async (req, res) => {
+    try {
+        const services = await DB.getServices()
+        res.status(200).json({
+            services
         })
-    })
+    } catch (error) {
+        res.status(500).json({
+            error: error.message,
+            cause: error.cause
+        })
+    }
 }
 
+//TODO: fix this
 exports.getService = (req, res) => {
     const serviceID = req.params.service_id
     pool.query("SELECT * FROM dbo_services WHERE service_id = ?", [serviceID], (err, data) => {

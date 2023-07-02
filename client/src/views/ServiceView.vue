@@ -52,7 +52,7 @@ onMounted(() => {
             e.cost = formatter.format(e.cost)
         });
     }).catch((err) => {
-        console.error(err)
+        console.error(err.response.data)
     })
 })
 

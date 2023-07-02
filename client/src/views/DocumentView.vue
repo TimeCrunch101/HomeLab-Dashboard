@@ -10,7 +10,7 @@ axios.get(`/api/get/draft/${route.params.draft_id}`).then((res) => {
     documentDraft.value = res.data.draft
     document.getElementById('doc-body').innerHTML = documentDraft.value.draft_html
 }).catch((err) => {
-    console.error(err)
+    console.error(err.response.data)
 })
 onMounted(() => {
 })

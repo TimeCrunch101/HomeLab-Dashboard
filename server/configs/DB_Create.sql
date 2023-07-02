@@ -14,8 +14,7 @@ CREATE TABLE `dbo_creds` (
   `link` varchar(255) DEFAULT NULL,
   `related_service` int NOT NULL,
   PRIMARY KEY (`cred_id`),
-  KEY `serviceFK_idx` (`related_service`),
-  CONSTRAINT `credFK` FOREIGN KEY (`related_service`) REFERENCES `dbo_services` (`service_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `serviceFK_idx` (`related_service`)
 );
 
 --
@@ -30,8 +29,7 @@ CREATE TABLE `dbo_document_drafts` (
   `timestamp` varchar(60) DEFAULT NULL,
   `related_service` int DEFAULT NULL,
   PRIMARY KEY (`draft_id`),
-  KEY `draftFK_idx` (`related_service`),
-  CONSTRAINT `draftFK` FOREIGN KEY (`related_service`) REFERENCES `dbo_services` (`service_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `draftFK_idx` (`related_service`)
 );
 
 --
@@ -46,8 +44,7 @@ CREATE TABLE `dbo_documents` (
   `doc_timestamp` varchar(45) DEFAULT NULL,
   `related_service` int DEFAULT NULL,
   PRIMARY KEY (`doc_id`),
-  KEY `docFK_idx` (`related_service`),
-  CONSTRAINT `docFK` FOREIGN KEY (`related_service`) REFERENCES `dbo_services` (`service_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `docFK_idx` (`related_service`)
 );
 
 --
@@ -67,8 +64,7 @@ CREATE TABLE `dbo_hardware` (
   `serial_number` varchar(45) DEFAULT NULL,
   `related_service` int NOT NULL,
   PRIMARY KEY (`hardware_id`),
-  KEY `serviceFK_idx` (`related_service`),
-  CONSTRAINT `serviceFK` FOREIGN KEY (`related_service`) REFERENCES `dbo_services` (`service_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `serviceFK_idx` (`related_service`)
 );
 
 --
@@ -85,3 +81,18 @@ CREATE TABLE `dbo_services` (
   `service_icon` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`service_id`)
 );
+
+/* Foreign Keys */
+
+ALTER TABLE `dashboard_new`.`dbo_creds` 
+ADD CONSTRAINT `credFK` FOREIGN KEY (`related_service`) REFERENCES `dashboard_new`.`dbo_services` (`service_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `dashboard_new`.`dbo_document_drafts` 
+ADD CONSTRAINT `draftFK` FOREIGN KEY (`related_service`) REFERENCES `dbo_services` (`service_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+ALTER TABLE `dashboard_new`.`dbo_documents` 
+ADD CONSTRAINT `docFK` FOREIGN KEY (`related_service`) REFERENCES `dbo_services` (`service_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `dashboard_new`.`dbo_documents`
+ADD CONSTRAINT `serviceFK` FOREIGN KEY (`related_service`) REFERENCES `dbo_services` (`service_id`) ON DELETE CASCADE ON UPDATE CASCADE;

@@ -46,7 +46,7 @@ const addHardware = () => {
         SN: form.value.SN,
         related_service: route.params.service_id
     }).catch((err) => {
-        console.log(err)
+        console.error(err.response.data)
     })
     util.closeHardwareModal()
 }

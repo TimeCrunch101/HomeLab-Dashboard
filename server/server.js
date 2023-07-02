@@ -28,10 +28,8 @@ app.use(limiter);
 
 const initGetRouter = require("./routers/getRouter")
 const initPostRouter = require("./routers/postRouter")
-const initDeleteRouter = require("./routers/deleteRouter")
 initGetRouter(app)
 initPostRouter(app)
-initDeleteRouter(app)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(__dirname + '/public'))

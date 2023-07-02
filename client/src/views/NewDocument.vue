@@ -59,7 +59,7 @@ const saveDraft = async () => {
             }
         }
     }).catch((err) => {
-        console.error(err)
+        console.error(err.response.data)
     })
 }
 
@@ -74,7 +74,7 @@ onMounted(() => {
     axios.get('/api/services').then((res) => {
         relatedServices.value = res.data.services
     }).catch((err) => {
-
+        console.error(err.response.data)
     })
 })
 </script>

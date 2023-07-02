@@ -28,7 +28,7 @@ const logit = () => {
         link: form.value.link,
         related_service: route.params.service_id
     }).catch((err) => {
-        console.log(err)
+        console.error(err.response.data)
     })
     util.closeCredModal()
 }

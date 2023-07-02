@@ -7,7 +7,7 @@ import { ref } from "vue";
 axios.get('/api/services').then((res) => {
     data.value = res.data.services
 }).catch((err) => {
-    console.error(err)
+    console.error(err.response.data)
 })
 
 const data = ref([])

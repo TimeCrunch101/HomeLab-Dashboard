@@ -23,7 +23,7 @@ const logit = () => {
         service_username: form.value.service_username,
         service_password: form.value.service_password
     }).catch((err) => {
-        console.log(err)
+        console.error(err.response.data)
     })
     util.closeModal()
 }

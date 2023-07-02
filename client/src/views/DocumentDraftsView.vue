@@ -11,7 +11,7 @@ onMounted(() => {
             apiArray.value = res.data.documentDrafts
         }     
     }).catch((err) => {
-        console.error(err)
+        console.error(err.response.data)
     })
 })
 

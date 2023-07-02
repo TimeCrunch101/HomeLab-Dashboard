@@ -14,7 +14,7 @@ const deletePublishedDocument = (draft_id) => {
     axios.delete(`/api/delete/published/document/${draft_id}`).then((res) => {
         displaySuccessAlert.value = true
     }).catch((err) => {
-        console.error(err)
+        console.error(err.response.data)
     })
 }
 

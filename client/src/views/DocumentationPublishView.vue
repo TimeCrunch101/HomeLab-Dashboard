@@ -22,7 +22,7 @@ onMounted(() => {
     axios.get("/api/get/published/documents").then((res) => {
         publishedDocs.value = res.data.docs
     }).catch((err) => {
-        console.error(err)
+        console.error(err.response.data)
     })
     axios.get("/api/get/document/draft-ids").then((res) => {
         if (res.data.status === 'success') {
@@ -33,7 +33,7 @@ onMounted(() => {
             }
         }
     }).catch((err) => {
-        console.error(err)
+        console.error(err.response.data)
     })
 })
 
