@@ -18,30 +18,10 @@ import "quill/dist/quill.min.js"
 
 import axios from 'axios'
 
-
 axios.defaults.withCredentials = true
 if (process.env.NODE_ENV !== "production") {
     axios.defaults.baseURL = "http://localhost:8080";
   }
-// if (process.env.NODE_ENV === 'development') {
-//     axios.defaults.baseURL = 'http://localhost:8080/'
-// } else {
-//     axios.defaults.baseURL = 'http://192.168.60.114:8080'
-// }
-axios.defaults.withCredentials
-// axios.interceptors.response.use(undefined, function (error) {
-//     if (error) {
-//       const originalRequest = error.config;
-//       if (error.response.status === 401 && !originalRequest._retry) {
-    
-//           originalRequest._retry = true;
-//           store.dispatch('LogOut')
-//           return router.push('/login')
-//       }
-//     }
-//   })
-
-
 
 import "./assets/scss/main.scss"
 const pinia = createPinia()
