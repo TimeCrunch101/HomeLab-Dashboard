@@ -26,4 +26,4 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: cd ./client && npm ci && npm run build && cd ..
-    - run: npx pm2 status
+    - run: pm2 start ./ecosystem.config.js
