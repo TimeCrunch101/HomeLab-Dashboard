@@ -2,7 +2,6 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 5000
 const cors = require('cors')
 app.use(cors({
     origin: true,
@@ -34,4 +33,4 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
-app.listen(port, console.log(`${process.env.NODE_ENV} Mode | ${process.env.SERVER}:${port}`))
+app.listen(8080, console.log(`MODE: ${process.env.NODE_ENV}`))
