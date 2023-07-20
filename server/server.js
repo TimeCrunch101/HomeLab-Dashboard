@@ -14,17 +14,13 @@ app.use(express.urlencoded({
 }))
 app.use(express.json())
 
-
-// set up rate limiter: maximum of five requests per minute
 var RateLimit = require('express-rate-limit');
 var limiter = RateLimit({
   windowMs: 15*60*1000, // 1 minute
   max: 400
 });
 
-// apply rate limiter to all requests
 app.use(limiter);
-
 
 const initGetRouter = require("./routers/getRouter")
 const initPostRouter = require("./routers/postRouter")
@@ -37,6 +33,5 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(__dirname + '/public/index.html')
     })
 }
-
 
 app.listen(port, console.log(`${process.env.NODE_ENV} Mode | ${process.env.SERVER}:${port}`))
