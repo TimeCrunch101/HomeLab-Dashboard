@@ -1,11 +1,12 @@
 <script setup>
 import { ref } from 'vue';
 import { utilStore } from '../../stores/utilStore'
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 import axios from "axios"
 
 const util = utilStore()
 const route = useRoute()
+const router = useRouter()
 
 const form = ref({
     make_model: null,
@@ -45,10 +46,12 @@ const addHardware = () => {
         cost: form.value.cost,
         SN: form.value.SN,
         related_service: route.params.service_id
+    }).then((res) => {
+        util.closeHardwareModal()
+        location.reload()
     }).catch((err) => {
         console.error(err.response.data)
     })
-    util.closeHardwareModal()
 }
 
 </script>

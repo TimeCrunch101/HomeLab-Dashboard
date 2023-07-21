@@ -1,14 +1,15 @@
 <script setup>
-import { onMounted } from "vue";
+// import { onMounted } from "vue";
 import HardwareCard from "../components/HardwareCard.vue";
 import CredentialCard from "../components/CredentialCard.vue"
 import TagItem from "../components/TagItem.vue";
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import axios from "axios";
 import { ref } from "vue";
 import { utilStore } from "../stores/utilStore";
 
 const route = useRoute()
+const router = useRouter()
 
 const serviceData = ref({
     title: null,
@@ -41,7 +42,7 @@ const sumArray = (array) => {
   return formatSum;
 }
 
-onMounted(() => {
+const getServiceData = () => {
     axios.get(`/api/get/service/${route.params.service_id}`).then((res) => {
         serviceTotalCost.value = sumArray(res.data.hardwareData)
         serviceData.value.title = res.data.service_data.title
@@ -54,17 +55,19 @@ onMounted(() => {
     }).catch((err) => {
         console.error(err.response.data)
     })
-})
+}
 
 const deleteService = (service_id) => {
     console.log(service_id)
     axios.delete(`/api/delete/service/${route.params.service_id}`).then((res) => {
-        console.log(res.data)
+        router.push('/')
+        getServiceData()
     }).catch((err) => {
         console.error(err.response.data)
     })
 }
 
+getServiceData()
 </script>
 
 <template>
@@ -97,6 +100,8 @@ const deleteService = (service_id) => {
         <div class="card-list-wrapper mt-1">
             <div v-for="hardware in hardwareData">
                 <HardwareCard
+                @refresh-data="getServiceData()"
+                :hardware_id="hardware.hardware_id"
                 :deviceName="hardware.make_model" 
                 :hostname="hardware.hostname" 
                 :management="hardware.ipmi" 

@@ -13,6 +13,7 @@ const initPostRouter = (app) => {
     postRouter.delete('/api/delete/draft/:draft_id', postController.deleteDraft)
     postRouter.delete('/api/delete/published/document/:doc_id', postController.deleteDocument)
     postRouter.delete('/api/delete/service/:service_id', postController.deleteService)
+    postRouter.delete('/api/delete/hardware/:hardware_id', postController.deleteHardware)
 
     return app.use('/', postRouter)
 }

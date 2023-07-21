@@ -178,3 +178,18 @@ exports.deleteService = (req,res) => {
         }
     })
 }
+exports.deleteHardware = (req, res) => {
+    pool.query("DELETE FROM dbo_hardware WHERE hardware_id = ?",[req.params.hardware_id], (err) => {
+        try {
+            if (err) throw new Error('Could not delete hardware', {cause: err.message})
+            res.status(201).json({
+                message: "Hardware Deleted"
+            })
+        } catch (error) {
+            res.status(500).json({
+                error: error.message,
+                cause: error.cause
+            })
+        }
+    })
+}

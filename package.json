@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "api": "nodemon ./server/server.js",
-    "vue": "cd ./client && vite",
+    "vue": "cd ./client && npm run dev",
     "build": "cd ./client && vite build"
   },
   "author": "Aaron Allen",

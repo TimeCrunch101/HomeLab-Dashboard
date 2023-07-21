@@ -1,4 +1,6 @@
 <script setup>
+import axios from 'axios';
+
 const props = defineProps({
     deviceName: String,
     hostname: String,
@@ -8,7 +10,18 @@ const props = defineProps({
     nics: String,
     cost: String,
     serialNumber: String,
+    hardware_id: Number
 })
+
+const emit = defineEmits(["refresh-data"])
+
+const deleteHardware = (id) => {
+    axios.delete(`/api/delete/hardware/${id}`,).then((res) => {
+        emit('refresh-data')
+    }).catch((err) => {
+        console.log(err.message.data)
+    })
+}
 
 </script>
 
@@ -29,6 +42,7 @@ const props = defineProps({
     </div>
     <div class="card-footer">
         <a :href="management" target="_blank">MANAGE</a>
+        <button @click="deleteHardware(hardware_id)" class="btn btn-danger">DELETE</button>
     </div>
 </div>
 

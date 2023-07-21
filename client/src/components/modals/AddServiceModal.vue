@@ -22,10 +22,12 @@ const logit = () => {
         homepage: form.value.homepage,
         service_username: form.value.service_username,
         service_password: form.value.service_password
+    }).then((res) => {
+        util.closeModal()
+        location.reload()
     }).catch((err) => {
         console.error(err.response.data)
     })
-    util.closeModal()
 }
 
 </script>
