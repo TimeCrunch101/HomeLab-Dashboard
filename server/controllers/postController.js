@@ -193,3 +193,19 @@ exports.deleteHardware = (req, res) => {
         }
     })
 }
+
+exports.deleteCred = (req, res) => {
+    pool.query("DELETE FROM dbo_creds WHERE cred_id = ?", [req.params.cred_id],(err) => {
+        try {
+            if (err) throw new Error("Could not delete cred",{cause: err.message})
+            res.status(201).json({
+                message: "Cred Deleted"
+            })
+        } catch (error) {
+            res.status(500).json({
+                error: error.message,
+                cause: error.cause
+            })
+        }
+    })
+}

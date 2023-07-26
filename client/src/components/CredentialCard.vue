@@ -33,6 +33,14 @@ const copyPassword = (cred_id) => {
     })
 }
 
+const deleteCred = (cred_id) => {
+    axios.delete(`/api/delete/cred/${cred_id}`).then((res) => {
+        console.log(res.data)
+    }).catch((err) => {
+        console.error(err.response.data)
+    })
+}
+
 </script>
 
 <template>
@@ -48,6 +56,7 @@ const copyPassword = (cred_id) => {
     </div>
     <div class="card-footer">
         <a :href="link" target="_blank">LOGIN</a>
+        <button class="btn btn-danger" @click="deleteCred(cred_id)">DELETE</button>
     </div>
 </div>
 
