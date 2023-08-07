@@ -59,12 +59,15 @@ const getServiceData = () => {
 
 const deleteService = (service_id) => {
     console.log(service_id)
-    axios.delete(`/api/delete/service/${route.params.service_id}`).then((res) => {
-        router.push('/')
-        getServiceData()
-    }).catch((err) => {
-        console.error(err.response.data)
-    })
+    const response = confirm("Are you sure you want to delete this entire service page?")
+    if (response) {
+        axios.delete(`/api/delete/service/${route.params.service_id}`).then((res) => {
+            router.push('/')
+            getServiceData()
+        }).catch((err) => {
+            console.error(err.response.data)
+        })
+    }
 }
 
 getServiceData()

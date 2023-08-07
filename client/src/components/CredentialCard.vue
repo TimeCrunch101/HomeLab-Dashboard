@@ -34,11 +34,14 @@ const copyPassword = (cred_id) => {
 }
 
 const deleteCred = (cred_id) => {
-    axios.delete(`/api/delete/cred/${cred_id}`).then((res) => {
-        console.log(res.data)
-    }).catch((err) => {
-        console.error(err.response.data)
-    })
+    const response = confirm("Are you sure you want to delete these credentials?")
+    if (response) {
+        axios.delete(`/api/delete/cred/${cred_id}`).then((res) => {
+            console.log(res.data)
+        }).catch((err) => {
+            console.error(err.response.data)
+        })
+    }
 }
 
 </script>
