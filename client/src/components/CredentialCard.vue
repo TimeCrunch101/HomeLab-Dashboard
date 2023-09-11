@@ -1,8 +1,9 @@
 <script setup>
 import axios from 'axios';
-import { useRoute } from 'vue-router';
+// import { useRoute } from 'vue-router';
+import EditIcon from "../components/svgs/EditIcon.vue"
 
-const route = useRoute()
+// const route = useRoute()
 
 const props = defineProps({
     cred_id: Number,
@@ -60,6 +61,7 @@ const deleteCred = (cred_id) => {
     <div class="card-footer">
         <a :href="link" target="_blank">LOGIN</a>
         <button class="btn btn-danger" @click="deleteCred(cred_id)">DELETE</button>
+        <EditIcon />
     </div>
 </div>
 
