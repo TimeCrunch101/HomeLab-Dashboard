@@ -14,7 +14,6 @@ import "quill/dist/quill.snow.css"
 // Quill JS
 import "quill/dist/quill.core.js"
 import "quill/dist/quill.js"
-import "quill/dist/quill.min.js"
 
 import axios from 'axios'
 
